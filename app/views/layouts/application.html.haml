@@ -4,7 +4,9 @@
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
     %title= content_for?(:title) ? yield(:title) : 'Lunchtest'
     %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Lunchtest'}"}
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = # stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = #stylesheet_link_tag 'framework_and_overrides'
+    = stylesheet_link_tag CustomTheme.first.asset_url
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
