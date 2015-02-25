@@ -3,7 +3,7 @@ class ThemeCompiler
 
   def initialize(theme_id)
     @theme = CustomTheme.find(theme_id)
-    @body = ERB.new(File.read(File.join(Rails.root, 'app', 'assets', 'stylesheets', 'zcustom.scss.erb'))).result(theme.get_binding)
+    @body = ERB.new(File.read(File.join(Rails.root, 'app', 'assets', 'themes', 'zcustom.scss.erb'))).result(theme.get_binding)
     @tmp_themes_path = File.join(Rails.root, 'tmp', 'themes')
     @tmp_asset_name = theme.id.to_s
     @env = if Rails.application.assets.is_a?(Sprockets::Index)
