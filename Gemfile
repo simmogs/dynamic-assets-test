@@ -9,7 +9,8 @@ gem 'jquery-rails'
 #gem 'turbolinks'
 #gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.0'
-gem 'fog'
+gem 'fog', require: "fog/aws/storage"
+gem "asset_sync"
 
 group :development, :test do
   gem 'byebug'
