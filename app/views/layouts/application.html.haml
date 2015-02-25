@@ -5,7 +5,8 @@
     %title= content_for?(:title) ? yield(:title) : 'Lunchtest'
     %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Lunchtest'}"}
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
-    = stylesheet_link_tag CustomTheme.first.asset_url
+    - if CustomTheme.count > 0
+      = stylesheet_link_tag CustomTheme.first.asset_url
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
