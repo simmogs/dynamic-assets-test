@@ -46,7 +46,7 @@ class ThemeCompiler
     theme.delete_asset
 
     if Rails.env.production?
-      FOG_STORAGE.directories.get(ENV['FOG_DIRECTORY']).files.create(
+      fog_storage.directories.get(ENV['FOG_DIRECTORY']).files.create(
         :key    => theme.asset_path(asset.digest),
         :body   => StringIO.new(compressed_body),
         :public => true,
@@ -57,5 +57,12 @@ class ThemeCompiler
     end
 
     theme.update_attribute(:digest, asset.digest)
+  end
+
+  def fog_storage
+    @fog_storage ||= Fog::Storage.new(provider:                 'AWS',
+                                      aws_access_key_id:        ENV['ACCESS_KEY_ID'],
+                                      aws_secret_access_key:    ENV['SECRET_ACCESS_KEY']
+                                      )
   end
 end
