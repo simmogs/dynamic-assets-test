@@ -76,4 +76,5 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  config.action_controller.asset_host = 'https://s3-eu-west-1.amazonaws.com/butterware-asset-test/'
 end
