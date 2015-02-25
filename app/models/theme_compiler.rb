@@ -62,7 +62,8 @@ class ThemeCompiler
   def fog_storage
     @fog_storage ||= Fog::Storage.new(provider:                 'AWS',
                                       aws_access_key_id:        ENV['ACCESS_KEY_ID'],
-                                      aws_secret_access_key:    ENV['SECRET_ACCESS_KEY']
+                                      aws_secret_access_key:    ENV['SECRET_ACCESS_KEY'],
+                                      region: 'eu-west-1'
                                       )
   end
 end
